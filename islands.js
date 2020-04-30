@@ -29,7 +29,7 @@ const calculateNumberOfIslands = grid => {
 };
 
 const depthSearch = (grid, row, col) => {
-    // check boundaries
+    // check boundaries, base case
     if( row < 0 || row >= grid.length || col < 0 || col >= grid[row].length) {
         return;
     }
