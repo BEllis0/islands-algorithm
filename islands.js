@@ -12,7 +12,7 @@ const calculateNumberOfIslands = grid => {
     let islandCount = 0;
     
     // loop through grid row
-    for (let row = 0; i < grid.length; row++) {
+    for (let row = 0; row < grid.length; row++) {
         // loop through each column
         for (let column = 0; column < grid[row].length; column++) {
         // if current column in current row is 1
@@ -63,18 +63,27 @@ let grid2 = [
     [1,1,0,0,0],
     [0,0,1,0,0],
     [0,0,0,1,1]
-]
+];
+
+let grid3 = [
+    [0,0,0,1,0],
+    [0,1,0,0,1],
+    [1,0,1,1,0],
+    [1,0,0,0,1],
+    [0,1,1,1,0]
+];
 
 //actual values
 const actual1 = calculateNumberOfIslands(grid1);
 const actual2 = calculateNumberOfIslands(grid2);
+const actual3 = calculateNumberOfIslands(grid3);
 
 //expected values
 const expected1 = 1;
 const expected2 = 3;
+const expected3 = 7;
 
 //tests
 const assertionTest1 = assertionTest(expected1, actual1);
 const assertionTest2 = assertionTest(expected2, actual2);
-
-console.log(assertionTest1);
+const assertionTest3 = assertionTest(expected3, actual3);
