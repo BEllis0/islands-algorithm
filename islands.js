@@ -1,13 +1,53 @@
-
 const assertionTest = (expected, actual) => {
     if (expected === actual) {
-        return "Test successful";
+        return `Test successful, islands: ${actual}`;
     } else {
         return `Testing error: Expected ${expected} but recieved ${actual}`;
     }
 };
 
 const calculateNumberOfIslands = grid => {
+    
+    // save island count
+    let islandCount = 0;
+    
+    // loop through grid row
+    for (let row = 0; i < grid.length; row++) {
+        // loop through each column
+        for (let column = 0; column < grid[row].length; column++) {
+        // if current column in current row is 1
+            if (grid[row][column] === 1) {
+                // increment island count
+                islandCount++;
+                // use depth first search to check neighbors
+                depthSearch(grid, row, column);
+            }
+        }
+    }
+    // return island count
+    return islandCount;
+};
+
+const depthSearch = (grid, row, col) => {
+    // check boundaries
+    if( row < 0 || row >= grid.length || col < 0 || col >= grid[row].length) {
+        return;
+    }
+
+    // reference to current value
+    let currentValue = grid[row][col];
+
+    // if current value is an island
+    if (currentValue === 1) {
+        // change value at that index to show it as marked
+        grid[row][col] = '#';
+
+        // recursively check neighbors
+        depthSearch(grid, row + 1, col);
+        depthSearch(grid, row - 1, col);
+        depthSearch(grid, row, col + 1);
+        depthSearch(grid, row, col - 1);
+    }
 
 };
 
