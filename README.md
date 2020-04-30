@@ -1,0 +1,1 @@
+# Solution for the classic Number of Islands algorithm
